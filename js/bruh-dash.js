@@ -148,17 +148,26 @@ global.bruhdash = {
 
   // creates an array excluding all the specified values
   without: function(arr, ...vals) {
+    var newArr = [];
     for(var i=arr.length-1; i>=0; i--){
-      if(vals.includes(arr[i])){
-        arr.splice(i, 1);
+      if(vals.includes(arr[i]) === false){
+        newArr.push(arr[i]);
+        newArr.sort();
       }
     }
-    return arr;
+    return newArr;
   },
 
   // returns an array with specified values excluded
-  difference: function() {
-    //use push method
+  difference: function(arr, exVals) {
+    var newArr = [];
+    for(var i=0; i<arr.length; i++){
+      if(exVals.includes(arr[i]) === false){
+        newArr.push(arr[i]);
+        newArr.sort();
+      }
+    }
+    return newArr;
   },
 
   /*******************
