@@ -134,18 +134,26 @@ global.bruhdash = {
   },
 
   // removes elements of an array corresponding to the given indices
-  pullAt: function () {
-
+  pullAt: function (arr, indexNums) {
+    var newArr = [];
+    for(var i=arr.length-1; i>=0; i--){
+      if(indexNums.includes(i)){
+        var pulled = arr.splice(i, 1);
+        newArr = newArr.concat(pulled);
+        newArr.sort();
+      }
+    }
+    return newArr;
   },
 
   // creates an array excluding all the specified values
   without: function() {
-
+    //use push method
   },
 
   // returns an array with specified values excluded
   difference: function() {
-
+    //use push method
   },
 
   /*******************
@@ -154,6 +162,7 @@ global.bruhdash = {
 
   // creates an array of grouped elements
   zip: function () {
+
 
   },
 
