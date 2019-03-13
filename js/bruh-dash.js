@@ -147,8 +147,13 @@ global.bruhdash = {
   },
 
   // creates an array excluding all the specified values
-  without: function() {
-    //use push method
+  without: function(arr, ...vals) {
+    for(var i=arr.length-1; i>=0; i--){
+      if(vals.includes(arr[i])){
+        arr.splice(i, 1);
+      }
+    }
+    return arr;
   },
 
   // returns an array with specified values excluded
