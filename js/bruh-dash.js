@@ -199,40 +199,26 @@ global.bruhdash = {
 
   // creates an array of grouped elements in their pre-zip configuration
   unzip: function (arr) {
-    var longestArr = 0;
-    var combined = arr.flat();
-    var spliceMe = combined;
-    var toSplice = [];
-    var unzipped = [];
-
-    //Find grouped array with the longest length if there are multiple
-    for (var i=0; i<arr.length; i++){
-      if(arr[i].length > longestArr){
-        longestArr = arr[i].length;
-      }
+  
+	var longestArr = 0;
+  
+  arr.forEach(function(array){
+  	if(array.length > longestArr){
+    	longestArr = array.length;
     }
+  });
 
-    var num = longestArr;
-
-    var everyNth = (anArr, nth) => anArr.filter((e, i) => i % nth === nth - 1);
-
-    for(var a=num; a>1; a--){
-      var filtered = everyNth(combined, a);
-      toSplice+=filtered;
-      unzipped.push(filtered);
-    }
-
-    toSplice.toString();
-
-    spliceMe.forEach(function(element, index){
-      if(toSplice.indexOf(element)!== -1){
-        spliceMe.splice(index, 1);
-      }
-    })
-
-    unzipped.reverse();
-    unzipped.unshift(spliceMe);
-    return unzipped;
+	var zipped = [];
+	for (var i=0; i<longestArr; i++) {
+  	var newArr = [];
+    arr.forEach(function(array){
+    	if(array.length > i){
+      	newArr.push(array[i]);
+      } 
+    });
+    zipped.push(newArr);
+  }
+  return zipped;
   },
 
   // creates an array of elements into groups of length of specified size
