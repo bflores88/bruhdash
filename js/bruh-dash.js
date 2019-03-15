@@ -208,7 +208,7 @@ global.bruhdash = {
     }
   });
 
-	var zipped = [];
+	var unzipped = [];
 	for (var i=0; i<longestArr; i++) {
   	var newArr = [];
     arr.forEach(function(array){
@@ -216,14 +216,25 @@ global.bruhdash = {
       	newArr.push(array[i]);
       } 
     });
-    zipped.push(newArr);
+    unzipped.push(newArr);
   }
-  return zipped;
+  return unzipped;
   },
 
   // creates an array of elements into groups of length of specified size
-  chunk: function(){
+  chunk: function(arr, num){
 
+    if(num ===0){
+      return [];
+    }
+  
+    var chunk = [];
+
+    while(arr.length){ //because this is truthy & will stop once 0 or falsy
+    var newArr = arr.splice(0 ,num)
+    chunk.push(newArr);
+    }
+    return chunk;
   },
 
   // iterates over elements of a collection and invokes iteratee for each element
