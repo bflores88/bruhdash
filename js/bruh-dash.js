@@ -239,8 +239,20 @@ global.bruhdash = {
 
   // iterates over elements of a collection and invokes iteratee for each element
   // Note: this should work for arrays and objects
-  forEach: function() {
+  forEach: function(stuff, func) {
+  let result = [];
+  let arr = [];
+  
+  if(typeof stuff === 'object'){
+    arr = Object.values(stuff);
+  } else {arr = stuff;}
 
+  for(let i=0; i<arr.length; i++){
+    item = arr[i];
+    key = i;
+    func(item, key);
+  }
+  return result;
   },
 
   // creates an array of values by running each element in collection thru the iteratee
