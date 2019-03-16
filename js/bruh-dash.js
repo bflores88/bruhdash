@@ -298,7 +298,18 @@ global.bruhdash = {
   // Reduces the collection to a value which is the accumulated result of running each element
   // in the collection through an iteratee
   // Note: this should work for arrays and objects
-  reduce: function() {
+  reduce: function(stuff, func) {
+    var result = 0;
+  
+    let arr = [];
     
+    if(typeof stuff === 'object'){
+      arr = Object.values(stuff);
+    } else {arr = stuff;}
+  
+    for(let i=0; i<arr.length; i++){
+      result = func(result, arr[i]);
+    }
+    return result;
   }
 };
