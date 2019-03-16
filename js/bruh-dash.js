@@ -248,9 +248,7 @@ global.bruhdash = {
   } else {arr = stuff;}
 
   for(let i=0; i<arr.length; i++){
-    item = arr[i];
-    key = i;
-    func(item, key);
+    func(arr[i], i);
   }
   return result;
   },
@@ -267,8 +265,7 @@ global.bruhdash = {
   } else {arr = stuff;}
   
   for(let i=0; i<arr.length; i++){
-    let item = arr[i];
-    let pushMe = func(item);
+    let pushMe = func(arr[i]);
     result.push(pushMe);
   }
     return result;
@@ -280,8 +277,22 @@ global.bruhdash = {
 
   // iterates over elements of a collection and returns all elements that the predicate returns truthy for
   // Note: this should work for arrays and objects
-  filter: function() {
-
+  filter: function(stuff, func) {
+    var result = [];
+  
+    let arr = [];
+    
+    if(typeof stuff === 'object'){
+      arr = Object.values(stuff);
+    } else {arr = stuff;}
+  
+    for(let i=0; i<arr.length; i++){
+      let truthyOrFalsy = func(arr[i]);
+      if(truthyOrFalsy){
+        result.push(arr[i]);
+      }
+    }
+    return result;
   },
 
   // Reduces the collection to a value which is the accumulated result of running each element
