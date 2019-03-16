@@ -265,7 +265,8 @@ global.bruhdash = {
   } else {arr = stuff;}
   
   for(let i=0; i<arr.length; i++){
-    let pushMe = func(arr[i]);
+    item = arr[i];
+    let pushMe = func(item);
     result.push(pushMe);
   }
     return result;
@@ -287,7 +288,8 @@ global.bruhdash = {
     } else {arr = stuff;}
   
     for(let i=0; i<arr.length; i++){
-      let truthyOrFalsy = func(arr[i]);
+      let item = arr[i];
+      let truthyOrFalsy = func(item);
       if(truthyOrFalsy){
         result.push(arr[i]);
       }
@@ -308,7 +310,9 @@ global.bruhdash = {
     } else {arr = stuff;}
   
     for(let i=0; i<arr.length; i++){
-      result = func(result, arr[i]);
+      total = result;
+      value = arr[i];
+      result = func(total, value);
     }
     return result;
   }
